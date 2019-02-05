@@ -71,13 +71,11 @@ export default class extends Generator {
 	}
 
 	writing() {
-		this._editorconfig();
 		this._eslintignore();
 		this._eslintrc();
 		this._prettierrc();
 		this._prettierignore();
 		this._tsconfig();
-		this._jestconfig();
 		this._packageJSON();
 	}
 
@@ -112,10 +110,6 @@ export default class extends Generator {
 		);
 	}
 
-	_editorconfig() {
-		this._copy('.editorconfig', '.editorconfig');
-	}
-
 	_eslintignore() {
 		this._copy('.eslintignore', '.eslintignore');
 	}
@@ -134,10 +128,6 @@ export default class extends Generator {
 
 	_tsconfig() {
 		this._copy('tsconfig.json', 'tsconfig.json');
-	}
-
-	_jestconfig() {
-		this._copy('jest.config.js', 'jest.config.js');
 	}
 
 	_packageJSON() {
