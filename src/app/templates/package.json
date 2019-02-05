@@ -4,7 +4,15 @@
 	"version": "<%= projectVersion %>",
 	"author": "<%= authorName %>",
 	"dependencies": {
-		"express": "^4.16.4"
+		"express": "^4.16.4",
+		"mongoose": "^5.4.9",
+		"mongodb": "^3.1.13",
+		"cookie-parser": "^1.4.3",
+		"morgan": "^1.9.1",
+		"ts-node": "^8.0.1",
+		"superagent": "^4.1.0",
+		"http-errors": "^1.7.1",
+		"jest": "^24.0.0"
 	},
 	"keywords": [],
 	"devDependencies": {

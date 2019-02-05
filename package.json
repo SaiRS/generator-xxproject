@@ -33,8 +33,15 @@
     "yo": "^2.0.5"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "http-errors": "^1.7.1",
+    "jest": "^24.0.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.9",
+    "morgan": "^1.9.1",
+    "superagent": "^4.1.0",
     "ts-node": "^8.0.1",
     "yeoman-generator": "^3.2.0",
     "yosay": "^2.0.2"
