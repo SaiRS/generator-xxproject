@@ -1,5 +1,5 @@
 {
-  "name": "generator-webapp",
+  "name": "generator-xproject",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,7 +29,8 @@
     "prettier": "^1.16.0",
     "shelljs": "^0.8.3",
     "typescript": "^3.2.4",
-    "typescript-eslint-parser": "^22.0.0"
+    "typescript-eslint-parser": "^22.0.0",
+    "yo": "^2.0.5"
   },
   "dependencies": {
     "ts-node": "^8.0.1",

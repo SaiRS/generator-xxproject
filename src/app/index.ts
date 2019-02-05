@@ -9,56 +9,68 @@ export default class extends Generator {
 	private projectVersion: string;
 	private authorName: string;
 
-	async prompting() {
-		// this._welcome();
-		const answers = await this.prompt([
-			{
-				name: 'projectName',
-				type: 'input',
-				message: 'Project name:',
-				default: path.basename(this.destinationPath())
-			},
-			{
-				name: 'projectDescription',
-				type: 'input',
-				message: 'Project description:'
-			},
-			{
-				name: 'projectVersion',
-				type: 'input',
-				message: 'Project version:',
-				default: '0.1.0'
-			},
-			{
-				name: 'authorName',
-				type: 'input',
-				message: 'Author name:'
-			}
-		]);
+	constructor(args: string | string[], options: {}) {
+		super(args, options);
 
-		this.projectName = answers.projectName;
-		this.projectDescription = answers.projectDescription;
-		this.projectVersion = answers.projectVersion;
-		this.authorName = answers.authorName;
+		let argmentOptions: Generator.ArgumentConfig = {
+			type: String,
+			required: false
+		};
+		// yo xproject projectName
+		this.argument('projectName', argmentOptions);
+
+		this.projectName = this.options.projectName || '';
+	}
+
+	async prompting() {
+		if (this.projectName) {
+			// create new project
+			const answers = await this.prompt([
+				{
+					name: 'projectDescription',
+					type: 'input',
+					message: 'Project description:'
+				},
+				{
+					name: 'projectVersion',
+					type: 'input',
+					message: 'Project version:',
+					default: '0.1.0'
+				},
+				{
+					name: 'authorName',
+					type: 'input',
+					message: 'Author name:'
+				}
+			]);
+
+			this.projectDescription = answers.projectDescription;
+			this.projectVersion = answers.projectVersion;
+			this.authorName = answers.authorName;
+		} else {
+			// attach to exist projct
+			// 检查当前目录下是否有package.json
+			if (!this.fs.exists('package.json')) {
+				// eslint-disable-next-line
+				return Promise.reject(
+					new Error('unvalid project(should has package.json)')
+				);
+			} else {
+				// 设置project Name为当前文件夹的名字
+				this.projectName = path.basename(this.destinationPath());
+			}
+		}
 	}
 
 	initializing() {
-		// 切换到
-		// shell.cd(this.options.projectname);
-		// package init
 		//
-		// this.destinationRoot(this.options.projectname);
 	}
 
 	configuring() {
-		this.log('configuring');
-
-		shell.mkdir(this.projectName);
-		// this.destinationRoot(this.destinationPath());
+		this.destinationRoot(this.projectName);
 	}
 
 	writing() {
-		this.log('writing');
 		this._editorconfig();
 		this._eslintignore();
 		this._eslintrc();
@@ -68,81 +80,34 @@ export default class extends Generator {
 		this._packageJSON();
 	}
 
-	conflicts() {
-		this.log('conflicts');
-	}
+	// conflicts() {
+	// 	this.log('conflicts');
+	// }
 
 	install() {
-		shell.cd(this.projectName);
+		// shell.cd(this.projectName);
 		this.installDependencies({
 			npm: true,
 			bower: false,
 			yarn: false
 		});
+
+		// 创建src
+		shell.mkdir('src');
 	}
 
-	end() {
-		this.log('end');
-	}
+	// end() {
+	// 	this.log('end');
+	// }
 
 	/********************* prompt start *************************/
-
-	_welcome() {
-		// this.log(
-		// 	yosay(
-		// 		"'Allo 'allo! This generator add Redux, " +
-		// 			'styled-components and some useful tools and libraries like ' +
-		// 			'auto-generate boilerplate code to the most common ' +
-		// 			'React starter Create React App'
-		// 	)
-		// );
-	}
-
-	async _ask() {
-		return this.prompt([
-			{
-				name: 'projectName',
-				type: 'input',
-				message: 'Project name:',
-				default: path.basename(this.destinationPath())
-			},
-			{
-				name: 'projectDescription',
-				type: 'input',
-				message: 'Project description:'
-			},
-			{
-				name: 'projectVersion',
-				type: 'input',
-				message: 'Project version:',
-				default: '0.1.0'
-			},
-			{
-				name: 'authorName',
-				type: 'input',
-				message: 'Author name:'
-			}
-		]).then((answers) => {
-			this.projectName = answers.projectName;
-			this.projectDescription = answers.projectDescription;
-			this.projectVersion = answers.projectVersion;
-			this.authorName = answers.authorName;
-		});
-	}
 
 	/********************* prompt end *************************/
 
 	_copy(sourcePath: string, destinationPath: string) {
-		this.log(
-			`template path', ${this.templatePath(
-				sourcePath
-			)}, 'destinatin path', ${this.destinationPath(
-				`${this.projectName}/${destinationPath}`
-			)}`
-		);
 		this.fs.copy(
 			this.templatePath(sourcePath),
-			this.destinationPath(`${this.projectName}/${destinationPath}`)
+			this.destinationPath(`${destinationPath}`)
 		);
 	}
 
@@ -173,7 +138,7 @@ export default class extends Generator {
 	_packageJSON() {
 		this.fs.copyTpl(
 			this.templatePath('package.json'),
-			this.destinationPath(`${this.projectName}/package.json`),
+			this.destinationPath(`package.json`),
 			{
 				projectName: this.projectName,
 				projectDescription: this.projectDescription,
