@@ -77,6 +77,7 @@ export default class extends Generator {
 		this._prettierrc();
 		this._prettierignore();
 		this._tsconfig();
+		this._jestconfig();
 		this._packageJSON();
 	}
 
@@ -133,6 +134,10 @@ export default class extends Generator {
 
 	_tsconfig() {
 		this._copy('tsconfig.json', 'tsconfig.json');
+	}
+
+	_jestconfig() {
+		this._copy('jest.config.js', 'jest.config.js');
 	}
 
 	_packageJSON() {

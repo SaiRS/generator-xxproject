@@ -39,6 +39,7 @@
 		"lint": "eslint **/*.js --quiet",
 		"lint-fix": "eslint --fix",
 		"generate": "plop --plopfile generators/index.js",
+		"test": "jest",
 		"lint-staged": {
 			"src/**/*.{js,vue,jsx,json,ts,tsx}": [
 				"prettier --config .prettierrc --write",

@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "npm run clear && npm run build-ts && npm run copy",
     "build-ts": "tsc",
     "clear": "ts-node scripts/clean.ts",
     "copy": "ts-node scripts/copy.ts",
     "test-generator": "npm run build && yo webapp test",
-    "eslint": "eslint src/**/*.{js,jsx,vue,ts,tsx}"
+    "eslint": "eslint src/**/*.{js,jsx,vue,ts,tsx}",
+    "jest": "jest --init"
   },
   "keywords": [],
   "author": "xjiaxiang_86@163.com",
