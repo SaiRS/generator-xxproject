@@ -1,0 +1,39 @@
+{
+  "name": "generator-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clear && npm run build-ts && npm run copy",
+    "build-ts": "tsc",
+    "clear": "ts-node scripts/clean.ts",
+    "copy": "ts-node scripts/copy.ts",
+    "test-generator": "npm run build && yo webapp test",
+    "eslint": "eslint src/**/*.{js,jsx,vue,ts,tsx}"
+  },
+  "keywords": [],
+  "author": "xjiaxiang_86@163.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/shelljs": "^0.8.1",
+    "@types/yeoman-generator": "^3.0.1",
+    "@types/yosay": "0.0.29",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-alloy": "^1.4.2",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-compat": "^2.6.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-typescript": "^0.14.0",
+    "prettier": "^1.16.0",
+    "shelljs": "^0.8.3",
+    "typescript": "^3.2.4",
+    "typescript-eslint-parser": "^22.0.0"
+  },
+  "dependencies": {
+    "ts-node": "^8.0.1",
+    "yeoman-generator": "^3.2.0",
+    "yosay": "^2.0.2"
+  }
+}

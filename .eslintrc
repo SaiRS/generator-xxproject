@@ -1,0 +1,43 @@
+{
+	"extends": [
+		"eslint-config-alloy/typescript",
+		"prettier"
+	],
+	"plugins": [
+		"prettier",
+		"compat"
+	],
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"commonjs": true,
+		"es6": true
+	},
+	"rules": {
+		"prettier/prettier": "error",
+		"semi": "error",
+		"valid-jsdoc": "error",
+		"compat/compat": "error",
+		"no-undefined": "off"
+	},
+	"settings": {
+	},
+	"overrides": [{
+		"files": "src/**/*.{ts,tsx}",
+		"parser": "typescript-eslint-parser",
+		"plugins": ["typescript"],
+		"rules": {
+			"no-undef": "off",
+			"no-dupe-class-members": "off",
+			"complexity": "off",
+			"func-name-matching": "off"
+		}
+	}]
+}

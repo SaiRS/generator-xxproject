@@ -1,0 +1,49 @@
+{
+	"name": "<%= projectName %>",
+	"description": "<%= projectDescription %>",
+	"version": "<%= projectVersion %>",
+	"author": "<%= authorName %>",
+	"dependencies": {},
+	"keywords": [],
+	"devDependencies": {
+		"husky": "^0.14.3",
+		"pretty-quick": "^1.6.0",
+		"babel-eslint": "^10.0.1",
+		"eslint": "^5.12.1",
+		"eslint-config-alloy": "^1.4.2",
+		"eslint-config-prettier": "^3.6.0",
+		"eslint-plugin-compat": "^2.6.3",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-typescript": "^0.14.0",
+		"prettier": "^1.16.0",
+		"shelljs": "^0.8.3",
+		"typescript": "^3.2.4",
+		"typescript-eslint-parser": "^22.0.0"
+	},
+	"scripts": {
+		"format": "prettier --write '**/*.{js,jsx,json,md}'",
+		"format:changed": "pretty-quick",
+		"format:staged": "pretty-quick --staged",
+		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+		"lint": "eslint **/*.js --quiet",
+		"lint-fix": "eslint --fix",
+		"generate": "plop --plopfile generators/index.js",
+		"lint-staged": {
+			"src/**/*.{js,vue,jsx,json,ts,tsx}": [
+				"prettier --config .prettierrc --write",
+				"eslint",
+				"git add"
+			],
+			"src/**/*.{css,scss,less}": [
+				"prettier --config .prettierrc --write",
+				"stylelint --syntax=scss",
+				"git add"
+			]
+		}
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	}
+}
