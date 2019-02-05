@@ -3,9 +3,12 @@
 	"description": "<%= projectDescription %>",
 	"version": "<%= projectVersion %>",
 	"author": "<%= authorName %>",
-	"dependencies": {},
+	"dependencies": {
+		"express": "^4.16.4"
+	},
 	"keywords": [],
 	"devDependencies": {
+		"faker": "^4.1.0",
 		"husky": "^0.14.3",
 		"pretty-quick": "^1.6.0",
 		"babel-eslint": "^10.0.1",
