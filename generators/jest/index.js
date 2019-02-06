@@ -11,7 +11,9 @@ class JestConfig extends yeoman_generator_1.default {
                 test: 'jest'
             },
             devDependencies: {
-                jest: '^24.0.0'
+                jest: '^24.0.0',
+                '@types/jest': '^24.0.0',
+                "ts-jest": "^23.10.5"
             }
         };
         // Extend or create package.json file in destination path
@@ -19,6 +21,7 @@ class JestConfig extends yeoman_generator_1.default {
         // copying(1) --> shell脚本完成
         // copying(2)
         this.fs.copy(this.templatePath('jest.config.js'), this.destinationPath('jest.config.js'));
+        this.fs.copy(this.templatePath('jest'), this.destinationPath('config/jest'));
     }
     install() {
         this.npmInstall();

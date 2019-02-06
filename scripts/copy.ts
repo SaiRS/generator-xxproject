@@ -24,3 +24,4 @@ shell.cp('-u', 'src/app/templates/**', 'generators/app/templates/');
 
 // jest config
 shell.cp('-u', 'jest.config.js', 'generators/jest/templates/');
+shell.cp('-ur', 'config/jest', 'generators/jest/templates/');

@@ -1,4 +1,5 @@
 import Generator from 'yeoman-generator';
+import * as shell from 'shelljs';
 
 class JestConfig extends Generator {
 	writing() {
@@ -7,7 +8,9 @@ class JestConfig extends Generator {
 				test: 'jest'
 			},
 			devDependencies: {
-				jest: '^24.0.0'
+				jest: '^24.0.0',
+				'@types/jest': '^24.0.0',
+				"ts-jest": "^23.10.5"
 			}
 		};
 
@@ -20,6 +23,8 @@ class JestConfig extends Generator {
 			this.templatePath('jest.config.js'),
 			this.destinationPath('jest.config.js')
 		);
+
+		this.fs.copy(this.templatePath('jest'), this.destinationPath('config/jest'));
 	}
 
 	install() {

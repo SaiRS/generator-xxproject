@@ -162,11 +162,17 @@ module.exports = {
 	// timers: "real",
 
 	// A map from regular expressions to paths to transformers
-	// transform: null,
+	"transform": {
+		"^.+\\.(js|jsx|mjs)$": "<rootDir>/config/jest/babelTransform.js",
+		"^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
+		"^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+		"^.+\\.(graphql)$": "<rootDir>/config/jest/graphqlTransform.js",
+		"^(?!.*\\.(js|jsx|mjs|css|json|graphql)$)": "<rootDir>/config/jest/fileTransform.js"
+	},
 
 	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
 	transformIgnorePatterns: [
-	  "/node_modules/"
+		"/node_modules/"
 	],
 
 	// An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
