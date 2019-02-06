@@ -10,13 +10,8 @@
 	"devDependencies": {
 		"husky": "^0.14.3",
 		"babel-eslint": "^10.0.1",
-		"eslint-config-alloy": "^1.4.2",
-		"eslint-config-prettier": "^3.6.0",
 		"eslint-plugin-compat": "^2.6.3",
-		"eslint-plugin-prettier": "^3.0.1",
-		"eslint-plugin-typescript": "^0.14.0",
-		"shelljs": "^0.8.3",
-		"typescript-eslint-parser": "^22.0.0"
+		"shelljs": "^0.8.3"
 	},
 	"scripts": {
 		"generate": "plop --plopfile generators/index.js",

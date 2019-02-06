@@ -70,6 +70,10 @@ export default class extends Generator {
 		this.composeWith(require.resolve('../prettier'), {});
 		this.composeWith(require.resolve('../faker'), {});
 		this.composeWith(require.resolve('../typescript'), {});
+		this.composeWith(require.resolve('../eslint'), {
+			typescript: true,
+			prettier: true
+		});
 	}
 
 	configuring() {
