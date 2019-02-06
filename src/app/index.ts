@@ -69,6 +69,7 @@ export default class extends Generator {
 		this.composeWith(require.resolve('../mongodb'), {});
 		this.composeWith(require.resolve('../prettier'), {});
 		this.composeWith(require.resolve('../faker'), {});
+		this.composeWith(require.resolve('../typescript'), {});
 	}
 
 	configuring() {
@@ -76,8 +77,6 @@ export default class extends Generator {
 	}
 
 	writing() {
-		this._eslintignore();
-		this._eslintrc();
 		this._packageJSON();
 	}
 
@@ -108,14 +107,6 @@ export default class extends Generator {
 			this.templatePath(sourcePath),
 			this.destinationPath(`${destinationPath}`)
 		);
-	}
-
-	_eslintignore() {
-		this._copy('.eslintignore', '.eslintignore');
-	}
-
-	_eslintrc() {
-		this._copy('.eslintrc', '.eslintrc');
 	}
 
 	_packageJSON() {
