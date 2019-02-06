@@ -68,6 +68,7 @@ export default class extends Generator {
 		this.composeWith(require.resolve('../express'), {});
 		this.composeWith(require.resolve('../mongodb'), {});
 		this.composeWith(require.resolve('../prettier'), {});
+		this.composeWith(require.resolve('../faker'), {});
 	}
 
 	configuring() {

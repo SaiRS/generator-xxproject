@@ -8,7 +8,6 @@
 	},
 	"keywords": [],
 	"devDependencies": {
-		"faker": "^4.1.0",
 		"husky": "^0.14.3",
 		"babel-eslint": "^10.0.1",
 		"eslint": "^5.12.1",
