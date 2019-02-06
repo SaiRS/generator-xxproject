@@ -1,7 +1,11 @@
 {
-  "name": "generator-xproject",
+  "name": "generator-xxproject",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SaiRS/generator-xxproject/tree/develop"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
