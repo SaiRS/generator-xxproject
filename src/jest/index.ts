@@ -1,6 +1,6 @@
 import Generator from 'yeoman-generator';
 
-export default class extends Generator {
+class JestConfig extends Generator {
 	writing() {
 		const pkgJson = {
 			scripts: {
@@ -26,3 +26,5 @@ export default class extends Generator {
 		this.npmInstall();
 	}
 }
+
+module.exports = JestConfig;

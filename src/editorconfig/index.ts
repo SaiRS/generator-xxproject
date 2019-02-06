@@ -1,6 +1,6 @@
 import Generator from 'yeoman-generator';
 
-export default class extends Generator {
+class EditorConfig extends Generator {
 	writing() {
 		// copying(1) --> shell脚本完成
 		// copying(2)
@@ -10,3 +10,5 @@ export default class extends Generator {
 		);
 	}
 }
+
+module.exports = EditorConfig;

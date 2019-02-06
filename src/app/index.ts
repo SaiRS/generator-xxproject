@@ -35,7 +35,8 @@ export default class extends Generator {
 					name: 'projectVersion',
 					type: 'input',
 					message: 'Project version:',
-					default: '0.1.0'
+					default: '0.1.0',
+					store: true
 				},
 				{
 					name: 'authorName',
@@ -63,11 +64,12 @@ export default class extends Generator {
 	}
 
 	initializing() {
-		//
+		this.composeWith(require.resolve('../editorconfig'), {});
+		this.composeWith(require.resolve('../jest'), {});
 	}
 
 	configuring() {
-		this.destinationRoot(this.projectName);
+		this.destinationRoot(this.destinationPath(this.projectName));
 	}
 
 	writing() {
@@ -84,14 +86,12 @@ export default class extends Generator {
 	// }
 
 	install() {
-		// shell.cd(this.projectName);
 		this.installDependencies({
 			npm: true,
 			bower: false,
 			yarn: false
 		});
-
-		// 创建src
+		// // 创建src
 		shell.mkdir('src');
 	}
 
