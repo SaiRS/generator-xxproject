@@ -57,7 +57,7 @@ export default class extends Generator {
 				);
 			} else {
 				// 设置project Name为当前文件夹的名字
-				this.projectName = path.basename(this.destinationPath());
+				// this.projectName = path.basename(this.destinationPath());
 			}
 		}
 	}
@@ -77,16 +77,18 @@ export default class extends Generator {
 	}
 
 	configuring() {
-		this.destinationRoot(this.destinationPath(this.projectName));
+		if (this.projectName) {
+			this.destinationRoot(this.destinationPath(this.projectName));
+		}
 	}
 
 	writing() {
-		this._packageJSON();
+		if (this.projectName) {
+			this._packageJSON();
+		} else {
+			this._extendJson();
+		}
 	}
-
-	// conflicts() {
-	// 	this.log('conflicts');
-	// }
 
 	install() {
 		this.installDependencies({
@@ -97,10 +99,6 @@ export default class extends Generator {
 		// // 创建src
 		shell.mkdir('src');
 	}
-
-	// end() {
-	// 	this.log('end');
-	// }
 
 	/********************* prompt start *************************/
 
@@ -124,5 +122,10 @@ export default class extends Generator {
 				authorName: this.authorName
 			}
 		);
+	}
+
+	_extendJson() {
+		let pkgJson = this.fs.readJSON(this.templatePath('package.json'));
+		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
 	}
 }
