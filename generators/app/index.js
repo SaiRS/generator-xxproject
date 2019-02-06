@@ -20,6 +20,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const yeoman_generator_1 = __importDefault(require("yeoman-generator"));
 const shell = __importStar(require("shelljs"));
+const lodash_1 = __importDefault(require("lodash"));
 class default_1 extends yeoman_generator_1.default {
     constructor(args, options) {
         super(args, options);
@@ -121,6 +122,7 @@ class default_1 extends yeoman_generator_1.default {
     }
     _extendJson() {
         let pkgJson = this.fs.readJSON(this.templatePath('package.json'));
+        pkgJson = lodash_1.default.omit(pkgJson, ['name', 'description', 'version', 'author']);
         this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
     }
 }

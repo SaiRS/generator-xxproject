@@ -1,7 +1,6 @@
 import Generator from 'yeoman-generator';
 import * as shell from 'shelljs';
-import yosay from 'yosay';
-import path from 'path';
+import _ from 'lodash';
 
 export default class extends Generator {
 	private projectName: string;
@@ -126,6 +125,7 @@ export default class extends Generator {
 
 	_extendJson() {
 		let pkgJson = this.fs.readJSON(this.templatePath('package.json'));
+		pkgJson = _.omit(pkgJson, ['name', 'description', 'version', 'author']);
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
 	}
 }
