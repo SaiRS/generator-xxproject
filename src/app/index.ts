@@ -35,8 +35,7 @@ export default class extends Generator {
 					name: 'projectVersion',
 					type: 'input',
 					message: 'Project version:',
-					default: '0.1.0',
-					store: true
+					default: '0.1.0'
 				},
 				{
 					name: 'authorName',
