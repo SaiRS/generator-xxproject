@@ -1,0 +1,31 @@
+{
+	"name": "<%= projectName %>",
+	"description": "<%= projectDescription %>",
+	"version": "<%= projectVersion %>",
+	"author": "<%= authorName %>",
+	"dependencies": {
+		"ts-node": "^8.0.1"
+	},
+	"keywords": [],
+	"devDependencies": {
+		"husky": "^0.14.3",
+		"babel-eslint": "^10.0.1",
+		"eslint-plugin-compat": "^2.6.3",
+		"shelljs": "^0.8.3"
+	},
+	"scripts": {
+		"generate": "plop --plopfile generators/index.js",
+		"lint-staged": {
+			"src/**/*.{js,vue,jsx,json,ts,tsx}": [
+				"prettier --config .prettierrc --write",
+				"eslint",
+				"git add"
+			],
+			"src/**/*.{css,scss,less}": [
+				"prettier --config .prettierrc --write",
+				"stylelint --syntax=scss",
+				"git add"
+			]
+		}
+	}
+}
