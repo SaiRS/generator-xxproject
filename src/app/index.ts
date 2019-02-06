@@ -78,7 +78,6 @@ export default class extends Generator {
 	writing() {
 		this._eslintignore();
 		this._eslintrc();
-		this._tsconfig();
 		this._packageJSON();
 	}
 
@@ -117,10 +116,6 @@ export default class extends Generator {
 
 	_eslintrc() {
 		this._copy('.eslintrc', '.eslintrc');
-	}
-
-	_tsconfig() {
-		this._copy('tsconfig.json', 'tsconfig.json');
 	}
 
 	_packageJSON() {
