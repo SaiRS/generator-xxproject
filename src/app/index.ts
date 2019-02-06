@@ -65,6 +65,9 @@ export default class extends Generator {
 	initializing() {
 		this.composeWith(require.resolve('../editorconfig'), {});
 		this.composeWith(require.resolve('../jest'), {});
+		this.composeWith(require.resolve('../express'), {});
+		this.composeWith(require.resolve('../mongodb'), {});
+		this.composeWith(require.resolve('../prettier'), {});
 	}
 
 	configuring() {
@@ -74,8 +77,6 @@ export default class extends Generator {
 	writing() {
 		this._eslintignore();
 		this._eslintrc();
-		this._prettierrc();
-		this._prettierignore();
 		this._tsconfig();
 		this._packageJSON();
 	}
@@ -115,14 +116,6 @@ export default class extends Generator {
 
 	_eslintrc() {
 		this._copy('.eslintrc', '.eslintrc');
-	}
-
-	_prettierrc() {
-		this._copy('.prettierrc', '.prettierrc');
-	}
-
-	_prettierignore() {
-		this._copy('.prettierignore', '.prettierignore');
 	}
 
 	_tsconfig() {

@@ -4,21 +4,12 @@
 	"version": "<%= projectVersion %>",
 	"author": "<%= authorName %>",
 	"dependencies": {
-		"express": "^4.16.4",
-		"mongoose": "^5.4.9",
-		"mongodb": "^3.1.13",
-		"cookie-parser": "^1.4.3",
-		"morgan": "^1.9.1",
-		"ts-node": "^8.0.1",
-		"superagent": "^4.1.0",
-		"http-errors": "^1.7.1",
-		"jest": "^24.0.0"
+		"ts-node": "^8.0.1"
 	},
 	"keywords": [],
 	"devDependencies": {
 		"faker": "^4.1.0",
 		"husky": "^0.14.3",
-		"pretty-quick": "^1.6.0",
 		"babel-eslint": "^10.0.1",
 		"eslint": "^5.12.1",
 		"eslint-config-alloy": "^1.4.2",
@@ -26,20 +17,15 @@
 		"eslint-plugin-compat": "^2.6.3",
 		"eslint-plugin-prettier": "^3.0.1",
 		"eslint-plugin-typescript": "^0.14.0",
-		"prettier": "^1.16.0",
 		"shelljs": "^0.8.3",
 		"typescript": "^3.2.4",
 		"typescript-eslint-parser": "^22.0.0"
 	},
 	"scripts": {
-		"format": "prettier --write '**/*.{js,jsx,json,md}'",
-		"format:changed": "pretty-quick",
-		"format:staged": "pretty-quick --staged",
 		"eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
 		"lint": "eslint **/*.js --quiet",
 		"lint-fix": "eslint --fix",
 		"generate": "plop --plopfile generators/index.js",
-		"test": "jest",
 		"lint-staged": {
 			"src/**/*.{js,vue,jsx,json,ts,tsx}": [
 				"prettier --config .prettierrc --write",
@@ -51,11 +37,6 @@
 				"stylelint --syntax=scss",
 				"git add"
 			]
-		}
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
 		}
 	}
 }
