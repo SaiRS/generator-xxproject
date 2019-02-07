@@ -17,7 +17,18 @@
     "eslint": "eslint src/**/*.{js,jsx,vue,ts,tsx}",
     "jest": "jest --init"
   },
-  "keywords": ["yeoman", "generator", "typescript", "faker", "editorconfig", "eslint", "prettier", "mongodb", "jest", "express"],
+  "keywords": [
+    "yeoman",
+    "generator",
+    "typescript",
+    "faker",
+    "editorconfig",
+    "eslint",
+    "prettier",
+    "mongodb",
+    "jest",
+    "express"
+  ],
   "author": "xjiaxiang_86@163.com",
   "license": "ISC",
   "devDependencies": {
@@ -27,6 +38,7 @@
     "@types/yeoman-generator": "^3.0.1",
     "@types/yosay": "0.0.29",
     "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.12.1",
     "eslint-config-alloy": "^1.4.2",
     "eslint-config-google": "^0.12.0",
@@ -34,11 +46,14 @@
     "eslint-plugin-compat": "^2.6.3",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-typescript": "^0.14.0",
+    "ora": "^3.0.0",
     "prettier": "^1.16.0",
     "shelljs": "^0.8.3",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.4",
     "typescript-eslint-parser": "^22.0.0",
+    "webpack": "^4.29.2",
+    "webpack-cli": "^3.2.3",
     "yo": "^2.0.5"
   },
   "dependencies": {
