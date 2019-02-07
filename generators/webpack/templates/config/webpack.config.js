@@ -1,4 +1,7 @@
 const path = require('path');
+const fs = require('fs');
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
 	mode: "production", // "production" | "development" | "none"
@@ -18,7 +21,7 @@ module.exports = {
 	// webpack 开始打包
 	output: {
 		// webpack 如何输出结果的相关选项
-		path: path.resolve(__dirname, "dist"), // string
+		path: resolveApp('dist'), // string
 		// 所有输出文件的目标路径
 		// 必须是绝对路径（使用 Node.js 的 path 模块）
 		// filename: "bundle.js", // string

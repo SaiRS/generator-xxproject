@@ -1,0 +1,7 @@
+config/
+scripts/
+src/
+.*
+jest.config.js
+generators/**/*.map
+tsconfig.json
