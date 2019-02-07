@@ -13,10 +13,17 @@ such as `typescript`, `editorconfig`, `eslint`, `express`, `faker`, `jest`, `mon
 > need run `npm init` before, that means you shuold have a `package.json` file in current working directory.
 
 add editorconfig: `yo xxproject:editorconfig`
+
 add prettier: `yo xxproject:prettier`
+
 add faker: `yo xxproject:faker`
+
 add express: `yo xxproject:express`
+
 add typescript: `yo xxproject:typescript`
+
 add mongodb: `yo xxproject:mongodb`
+
 add jest: `yo xxproject:jest`
-add eslint: `yo xxproject:eslint`
+
+add eslint: `yo xxproject:eslint  [--typescript | --prettier]`
