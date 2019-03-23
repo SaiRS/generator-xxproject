@@ -26,11 +26,11 @@ class Webpack extends yeoman_generator_1.default {
                 webpack: '^4.29.2',
                 'webpack-cli': '^3.2.3',
                 'cross-env': '^5.2.0',
-                "ora": '^3.0.0',
-                'chalk': '^2.4.2'
+                ora: '^3.0.0',
+                chalk: '^2.4.2'
             },
             scripts: {
-                build: 'cross-env node scripts/build.js'
+                'webpack:build': 'cross-env node scripts/build.js'
             }
         };
         // Extend or create package.json file in destination path

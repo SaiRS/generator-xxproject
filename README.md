@@ -12,18 +12,22 @@ such as `typescript`, `editorconfig`, `eslint`, `express`, `faker`, `jest`, `mon
 ### attach to exist project
 > need run `npm init` before, that means you shuold have a `package.json` file in current working directory.
 
-add editorconfig: `yo xxproject:editorconfig`
+add editorconfig(default): `yo xxproject:editorconfig`
 
-add prettier: `yo xxproject:prettier`
+add prettier(default): `yo xxproject:prettier`
 
-add faker: `yo xxproject:faker`
+add faker(default): `yo xxproject:faker`
 
-add express: `yo xxproject:express`
+add express(default): `yo xxproject:express`
 
-add typescript: `yo xxproject:typescript`
+add typescript(default): `yo xxproject:typescript`
 
-add mongodb: `yo xxproject:mongodb`
+add mongodb(default): `yo xxproject:mongodb`
 
-add jest: `yo xxproject:jest`
+add jest(default): `yo xxproject:jest`
 
-add eslint: `yo xxproject:eslint  [--typescript | --prettier]`
+add eslint(default): `yo xxproject:eslint  [--typescript | --prettier]`
+
+add webpack : `yo xxproject:webpack`
+
+add next : `yo xxproject:next`

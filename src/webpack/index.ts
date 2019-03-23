@@ -18,23 +18,23 @@ class Webpack extends Generator {
 	}
 
 	writing() {
-		this.fs.copy(
-			this.templatePath('config/'),
-			this.destinationPath('config/')
-		);
+		this.fs.copy(this.templatePath('config/'), this.destinationPath('config/'));
 
-		this.fs.copy(this.templatePath('scripts/'), this.destinationPath('scripts/'));
+		this.fs.copy(
+			this.templatePath('scripts/'),
+			this.destinationPath('scripts/')
+		);
 
 		const pkgJson = {
 			devDependencies: {
 				webpack: '^4.29.2',
 				'webpack-cli': '^3.2.3',
 				'cross-env': '^5.2.0',
-				"ora": '^3.0.0',
-				'chalk': '^2.4.2'
+				ora: '^3.0.0',
+				chalk: '^2.4.2'
 			},
 			scripts: {
-				build: 'cross-env node scripts/build.js'
+				'webpack:build': 'cross-env node scripts/build.js'
 			}
 		};
 
