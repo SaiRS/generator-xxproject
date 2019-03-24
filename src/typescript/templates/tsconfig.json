@@ -7,7 +7,6 @@
 		"moduleResolution": "node",
 		"newLine": "lf",
 		"sourceMap": true,
-		"outDir": "generators",
 		"rootDir": "src",
 		"baseUrl": "."
 	},
