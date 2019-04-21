@@ -6,6 +6,12 @@ such as `typescript`, `editorconfig`, `eslint`, `express`, `faker`, `jest`, `mon
 `npm install -g yeoman generator-xxproject`
 
 ## usage
+
+> new command
+> yo xxproject:dev-env
+> contain the most features I used in my work day.
+> and it is updating
+
 ### create new project
 `yo xxproject projectName`
 

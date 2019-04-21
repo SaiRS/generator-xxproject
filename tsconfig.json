@@ -13,5 +13,8 @@
 	},
 	"include": [
 		"src/**/*", "generators/app/templates/tsconfig.json"
+	],
+	"exclude": [
+		"src/**/templates/*"
 	]
 }

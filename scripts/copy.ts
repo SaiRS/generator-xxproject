@@ -7,6 +7,7 @@ shell.mkdir('-p', 'generators/prettier/templates');
 shell.mkdir('-p', 'generators/typescript/templates');
 shell.mkdir('-p', 'generators/next/templates');
 shell.mkdir('-p', 'generators/tslint/templates');
+shell.mkdir('-p', 'generators/dev-env/templates');
 
 // editorconfig
 shell.cp('-u', '.editorconfig', 'generators/editorconfig/templates/');
@@ -22,6 +23,9 @@ shell.cp('-u', 'src/next/templates/**', 'generators/next/templates/');
 
 // tslint
 shell.cp('-u', 'src/tslint/templates/**', 'generators/tslint/templates/');
+
+// dev-env
+shell.cp('-ur', 'src/dev-env/templates/', 'generators/dev-env');
 
 // copy eslint
 shell.cp('-ur', 'src/eslint/templates', 'generators/eslint/templates');

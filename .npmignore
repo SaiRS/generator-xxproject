@@ -1,7 +1,10 @@
 config/
 scripts/
 src/
-.*
 jest.config.js
 generators/**/*.map
 tsconfig.json
+.*
+!generators/**/.*
+!generators/**/jest.config.js
+!generators/**/tsconfig.json
