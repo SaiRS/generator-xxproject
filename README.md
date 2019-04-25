@@ -3,7 +3,7 @@ create new project or attach some config to exist project.
 such as `typescript`, `editorconfig`, `eslint`, `express`, `faker`, `jest`, `mongodb`, `prettier`.
 
 ## install
-`npm install -g yeoman generator-xxproject`
+`npm install -g yo generator-xxproject`
 
 ## usage
 

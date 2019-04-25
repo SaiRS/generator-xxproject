@@ -13,7 +13,7 @@ class DevEnv extends Generator {
 		this._copy('.eslintignore');
 		this._copy('.eslintrc.js');
 		this._copy('.gitattributes');
-		this._copy('.gitignore');
+		// this._copy('.gitignore');
 		this._copy('.npmrc');
 		this._copy('.npmignore');
 		this._copy('.prettierignore');
@@ -139,6 +139,7 @@ class DevEnv extends Generator {
 				'stylelint-webpack-plugin': '^0.10.5',
 				'ts-jest': '^24.0.2',
 				typescript: '^3.4.3',
+				'ts-node': '^8.1.0',
 				webpack: '^4.30.0',
 				'webpack-cli': '^3.3.0'
 			},
