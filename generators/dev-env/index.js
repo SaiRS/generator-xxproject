@@ -77,7 +77,8 @@ class DevEnv extends yeoman_generator_1.default {
                 'core-js': '^3.0.1',
                 faker: '^4.1.0',
                 react: '^16.8.6',
-                'react-dom': '^16.8.6'
+                'react-dom': '^16.8.6',
+                'babel-plugin-macros': '^2.5.1'
             },
             devDependencies: {
                 '@babel/cli': '^7.4.3',
@@ -159,8 +160,6 @@ class DevEnv extends yeoman_generator_1.default {
     }
     install() {
         this.npmInstall();
-        // storybook
-        shell.exec('npx -p @storybook/cli sb init');
     }
     end() {
         // storybook config

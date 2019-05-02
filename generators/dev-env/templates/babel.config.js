@@ -18,6 +18,7 @@ const presets = [
 const plugins = [
   '@babel/proposal-class-properties',
   '@babel/proposal-object-rest-spread',
+  'macros',
   // 'babel-plugin-styled-components',
 ];
 
