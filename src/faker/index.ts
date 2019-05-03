@@ -5,6 +5,9 @@ class Faker extends Generator {
 		const pkgJson = {
 			dependencies: {
 				faker: '^4.1.0'
+			},
+			devDependencies: {
+				'@types/faker': '^4.1.5'
 			}
 		};
 
