@@ -5,12 +5,14 @@ class JestConfig extends Generator {
 	writing() {
 		const pkgJson = {
 			scripts: {
-				test: 'jest'
+				'jest:test': 'cross-env NODE_ENV=test jest --coverage',
+				'jest:test:watch': 'cross-env NODE_ENV=test jest --watchAll'
 			},
 			devDependencies: {
-				jest: '^24.0.0',
+				jest: '^24.7.1',
 				'@types/jest': '^24.0.0',
-				"ts-jest": "^23.10.5"
+				'ts-jest': '^23.10.5',
+				'babel-jest': '^24.7.1'
 			}
 		};
 
@@ -24,7 +26,10 @@ class JestConfig extends Generator {
 			this.destinationPath('jest.config.js')
 		);
 
-		this.fs.copy(this.templatePath('jest'), this.destinationPath('config/jest'));
+		this.fs.copy(
+			this.templatePath('config/jest'),
+			this.destinationPath('config/jest')
+		);
 	}
 
 	install() {

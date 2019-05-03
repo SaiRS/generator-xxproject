@@ -12,6 +12,7 @@ class Typescript extends Generator {
 				typescript: '^3.2.4'
 			},
 			devDependencies: {
+				'ts-node': '^8.1.0',
 				'cross-env': '^5.2.0',
 				'core-js': '^3.0.1',
 				'@babel/cli': '^7.4.3',

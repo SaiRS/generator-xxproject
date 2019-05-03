@@ -7,7 +7,8 @@ class Browswerlist extends Generator {
 				'lint-staged': 'lint-staged'
 			},
 			devDependencies: {
-				'lint-staged': '^8.1.5'
+				'lint-staged': '^8.1.5',
+				husky: '^1.3.1'
 			},
 			husky: {
 				hooks: {

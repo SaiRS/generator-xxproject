@@ -10,7 +10,6 @@ function getModuleGenerateTemplateDir(moduleName: string): string {
 
 
 shell.mkdir('-p', 'generators/app/templates');
-shell.mkdir('-p', 'generators/jest/templates');
 shell.mkdir('-p', 'generators/typescript/templates');
 shell.mkdir('-p', 'generators/next/templates');
 shell.mkdir('-p', 'generators/tslint/templates');
@@ -40,8 +39,7 @@ shell.cp('-ur', 'src/eslint/templates', 'generators/eslint/templates');
 shell.cp('-u', 'src/app/templates/**', 'generators/app/templates/');
 
 // jest config
-shell.cp('-u', 'jest.config.js', 'generators/jest/templates/');
-shell.cp('-ur', 'config/jest', 'generators/jest/templates/');
+shell.cp('-r', getModuleSrcTemplateDir('jest'), getModuleGenerateTemplateDir('jest'));
 
 
 // webpack
