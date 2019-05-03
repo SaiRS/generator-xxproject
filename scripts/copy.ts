@@ -1,20 +1,26 @@
 import * as shell from "shelljs";
 
+function getModuleSrcTemplateDir(moduleName: string): string {
+	return `src/${moduleName}/templates`;
+}
+function getModuleGenerateTemplateDir(moduleName: string): string {
+	return `generators/${moduleName}/templates`;
+}
+
+
+
 shell.mkdir('-p', 'generators/app/templates');
 shell.mkdir('-p', 'generators/jest/templates');
-shell.mkdir('-p', 'generators/editorconfig/templates');
-shell.mkdir('-p', 'generators/prettier/templates');
 shell.mkdir('-p', 'generators/typescript/templates');
 shell.mkdir('-p', 'generators/next/templates');
 shell.mkdir('-p', 'generators/tslint/templates');
 shell.mkdir('-p', 'generators/dev-env/templates');
 
 // editorconfig
-shell.cp('-u', '.editorconfig', 'generators/editorconfig/templates/');
+shell.cp('-r', getModuleSrcTemplateDir('editorconfig'), getModuleGenerateTemplateDir('editorconfig'));
 
-// copy prettier
-shell.cp('-u', '.prettierrc', 'generators/prettier/templates/');
-shell.cp('-u', '.prettierignore', 'generators/prettier/templates/');
+// prettier
+shell.cp('-r', getModuleSrcTemplateDir('prettier'), getModuleGenerateTemplateDir('prettier'));
 
 shell.cp('-u', 'src/typescript/templates/**', 'generators/typescript/templates/');
 

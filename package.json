@@ -32,6 +32,7 @@
   "author": "xjiaxiang86@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/faker": "^4.1.5",
     "@types/jest": "^24.0.0",
     "@types/lodash": "^4.14.120",
     "@types/shelljs": "^0.8.1",
@@ -60,6 +61,7 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
+    "cosmiconfig": "^5.2.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "http-errors": "^1.7.1",
