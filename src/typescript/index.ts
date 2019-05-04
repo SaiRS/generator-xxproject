@@ -1,6 +1,10 @@
 import Generator from 'yeoman-generator';
 
 class Typescript extends Generator {
+	initializing() {
+		this.composeWith(require.resolve('../browserlist'), {});
+	}
+
 	writing() {
 		const pkgJson = {
 			dependencies: {
