@@ -12,7 +12,7 @@
 		"baseUrl": "."
 	},
 	"include": [
-		"src/**/*", "generators/app/templates/tsconfig.json"
+		"src/**/*"
 	],
 	"exclude": [
 		"src/**/templates/*"

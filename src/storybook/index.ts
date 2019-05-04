@@ -7,7 +7,7 @@ class Storybook extends Generator {
 
 		this.option('react', {
 			default: true,
-			description: 'combine with sass?',
+			description: 'combine with react?',
 			type: Boolean
 		});
 	}
