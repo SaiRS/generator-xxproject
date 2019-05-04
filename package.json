@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/SaiRS/generator-xxproject/tree/develop"
   },
-	"main": "index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "npm run clear && npm run build-ts && npm run copy",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/cosmiconfig": "^5.0.3",
     "@types/faker": "^4.1.5",
+    "@types/is": "0.0.21",
     "@types/jest": "^24.0.0",
     "@types/js-yaml": "^3.12.1",
     "@types/jsonfile": "^5.0.0",
@@ -51,6 +52,8 @@
     "eslint-plugin-compat": "^2.6.3",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-typescript": "^0.14.0",
+    "is": "^3.3.0",
+    "lodash": "^4.17.11",
     "ora": "^3.0.0",
     "prettier": "^1.16.0",
     "shelljs": "^0.8.3",
@@ -68,10 +71,10 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "http-errors": "^1.7.1",
+    "is_js": "^0.9.0",
     "jest": "^24.0.0",
     "js-yaml": "^3.13.1",
     "jsonfile": "^5.0.0",
-    "lodash": "^4.17.11",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.9",
     "morgan": "^1.9.1",

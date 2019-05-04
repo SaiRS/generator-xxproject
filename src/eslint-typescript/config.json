@@ -1,0 +1,8 @@
+{
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^1.6.0",
+		"@typescript-eslint/parser": "^1.6.0",
+		"eslint-config-airbnb-typescript": "^2.0.0",
+		 "eslint-plugin-react": "^7.12.4"
+	}
+}
