@@ -13,7 +13,7 @@ class Stylelint extends Generator {
 		});
 
 		this.option('prettier', {
-			default: false,
+			default: true,
 			description: 'combine with prettier?',
 			type: Boolean
 		});

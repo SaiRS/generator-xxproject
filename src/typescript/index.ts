@@ -2,11 +2,6 @@ import Generator from 'yeoman-generator';
 
 class Typescript extends Generator {
 	writing() {
-		this.fs.copy(
-			this.templatePath('tsconfig.json'),
-			this.destinationPath('tsconfig.json')
-		);
-
 		const pkgJson = {
 			dependencies: {
 				typescript: '^3.2.4'
@@ -32,16 +27,16 @@ class Typescript extends Generator {
 				'build:types': 'tsc --emitDeclarationOnly',
 				'build:source':
 					'babel src --extensions ".ts,.tsx,.js,.jsx" --source-maps inline',
-				build:
+				'build:typescript':
 					'npm run build:commonjs && npm run build:umd  && npm run build:es',
 				'build:commonjs':
-					'npm run build:types -- --outDir lib && cross-env BABEL_ENV=commonjs npm run build:js -- --out-dir lib',
+					'npm run build:types -- --outDir lib && cross-env BABEL_ENV=commonjs npm run build:source -- --out-dir lib',
 				'build:es':
-					'npm run build:types -- --outDir es && cross-env BABEL_ENV=es npm run build:js -- --out-dir es',
+					'npm run build:types -- --outDir es && cross-env BABEL_ENV=es npm run build:source -- --out-dir es',
 				'build:amd':
-					'npm run build:types -- --outDir amd && cross-env BABEL_ENV=amd npm run build:js -- --out-dir amd',
+					'npm run build:types -- --outDir amd && cross-env BABEL_ENV=amd npm run build:source -- --out-dir amd',
 				'build:umd':
-					'npm run build:types -- --outDir umd && cross-env BABEL_ENV=umd npm run build:js -- --out-dir umd'
+					'npm run build:types -- --outDir umd && cross-env BABEL_ENV=umd npm run build:source -- --out-dir umd'
 			}
 		};
 
@@ -51,6 +46,17 @@ class Typescript extends Generator {
 
 	install() {
 		this.npmInstall();
+	}
+
+	end() {
+		this.fs.copy(
+			this.templatePath('tsconfig.json'),
+			this.destinationPath('tsconfig.json')
+		);
+		this.fs.copy(
+			this.templatePath('babel.config.js'),
+			this.destinationPath('babel.config.js')
+		);
 	}
 }
 
