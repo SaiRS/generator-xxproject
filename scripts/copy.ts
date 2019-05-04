@@ -10,9 +10,7 @@ function getModuleGenerateTemplateDir(moduleName: string): string {
 
 
 shell.mkdir('-p', 'generators/app/templates');
-shell.mkdir('-p', 'generators/typescript/templates');
 shell.mkdir('-p', 'generators/next/templates');
-shell.mkdir('-p', 'generators/tslint/templates');
 shell.mkdir('-p', 'generators/dev-env/templates');
 
 // editorconfig
@@ -21,17 +19,19 @@ shell.cp('-r', getModuleSrcTemplateDir('editorconfig'), getModuleGenerateTemplat
 // prettier
 shell.cp('-r', getModuleSrcTemplateDir('prettier'), getModuleGenerateTemplateDir('prettier'));
 
+// stylint
 shell.cp('-r', getModuleSrcTemplateDir('stylelint'), getModuleGenerateTemplateDir('stylelint'));
 shell.cp('-r', getModuleSrcTemplateDir('stylelint-prettier'), getModuleGenerateTemplateDir('stylelint-prettier'));
 shell.cp('-r', getModuleSrcTemplateDir('stylelint-sass'), getModuleGenerateTemplateDir('stylelint-sass'));
 
-shell.cp('-u', 'src/typescript/templates/**', 'generators/typescript/templates/');
+// typescript
+shell.cp('-r', getModuleSrcTemplateDir('typescript'), getModuleGenerateTemplateDir('typescript'));
+
+
+shell.cp('-r', getModuleSrcTemplateDir('storybook'), getModuleGenerateTemplateDir('storybook'));
 
 // next
 shell.cp('-u', 'src/next/templates/**', 'generators/next/templates/');
-
-// tslint
-shell.cp('-u', 'src/tslint/templates/**', 'generators/tslint/templates/');
 
 // dev-env
 shell.cp('-ur', 'src/dev-env/templates/', 'generators/dev-env');
