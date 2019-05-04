@@ -41,6 +41,8 @@ shell.cp('-ur', 'src/dev-env/templates/', 'generators/dev-env');
 
 // copy eslint
 shell.cp('-r', getModuleSrcTemplateDir('eslint'), getModuleGenerateTemplateDir('eslint'));
+shell.cp('-r', getModuleSrcTemplateDir('eslint-prettier'), getModuleGenerateTemplateDir('eslint-prettier'));
+shell.cp('-r', getModuleSrcTemplateDir('eslint-typescript'), getModuleGenerateTemplateDir('eslint-typescript'));
 
 // generator templates
 shell.cp('-u', 'src/app/templates/**', 'generators/app/templates/');

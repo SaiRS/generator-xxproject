@@ -1,0 +1,9 @@
+{
+	"scripts": {
+		"eslint-check": "eslint --print-config . | eslint-config-prettier-check"
+	},
+	"devDependencies": {
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-plugin-prettier": "^3.0.1"
+	}
+}

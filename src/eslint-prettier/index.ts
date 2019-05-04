@@ -2,27 +2,23 @@ import Generator from 'yeoman-generator';
 import cosmiconfig from 'cosmiconfig';
 import { extendsConfig } from '../tools/extends-config';
 import path from 'path';
-import eslintTypescriptPackage from './config.json';
-import eslintTypescriptConfig from './extend-config';
+import eslintPrettierPackage from './config.json';
+import eslintPrettierConfig from './extend-config';
 import _ from 'lodash';
 import { mergeConfigValue } from '../tools/merge-config';
 
 let _moduleName = 'eslint';
 
-class EslintTypescript extends Generator {
+class EslintPrettier extends Generator {
 	_extendConfig(config: { [key: string]: any }): { [key: string]: any } {
 		let newConfig = { ...config };
 
-		let result = _.mergeWith(
-			newConfig,
-			eslintTypescriptConfig,
-			mergeConfigValue
-		);
+		let result = _.mergeWith(newConfig, eslintPrettierConfig, mergeConfigValue);
 		return result;
 	}
 
 	writing() {
-		const pkgJson = eslintTypescriptPackage;
+		const pkgJson = eslintPrettierPackage;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
@@ -40,7 +36,7 @@ class EslintTypescript extends Generator {
 			this.fs.extendJSON(this.destinationPath('package.json'), {
 				eslintConfig: _.mergeWith(
 					pkg['eslintConfig'],
-					eslintTypescriptConfig,
+					eslintPrettierConfig,
 					mergeConfigValue
 				)
 			});
@@ -69,4 +65,4 @@ class EslintTypescript extends Generator {
 	}
 }
 
-module.exports = EslintTypescript;
+module.exports = EslintPrettier;

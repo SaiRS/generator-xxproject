@@ -25,6 +25,7 @@ class Eslint extends Generator {
 		}
 		if (this.options.prettier) {
 			this.composeWith(require.resolve('../prettier'), {});
+			this.composeWith(require.resolve('../eslint-prettier'), {});
 		}
 	}
 
