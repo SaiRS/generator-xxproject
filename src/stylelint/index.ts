@@ -7,7 +7,7 @@ class Stylelint extends Generator {
 		super(args, options);
 
 		this.option('sass', {
-			default: false,
+			default: true,
 			description: 'combine with sass?',
 			type: Boolean
 		});
@@ -20,10 +20,15 @@ class Stylelint extends Generator {
 	}
 
 	initializing() {
-		this.options.prettier &&
+		if (this.options.prettier) {
+			this.composeWith(require.resolve('../prettier'), {});
 			this.composeWith(require.resolve('../stylelint-prettier'), {});
-		this.options.sass &&
+		}
+
+		if (this.options.sass) {
+			this.composeWith(require.resolve('../sass'), {});
 			this.composeWith(require.resolve('../stylelint-sass'), {});
+		}
 	}
 
 	configuring() {
