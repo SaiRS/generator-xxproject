@@ -21,6 +21,9 @@ shell.cp('-r', getModuleSrcTemplateDir('editorconfig'), getModuleGenerateTemplat
 // prettier
 shell.cp('-r', getModuleSrcTemplateDir('prettier'), getModuleGenerateTemplateDir('prettier'));
 
+shell.cp('-r', getModuleSrcTemplateDir('stylelint'), getModuleGenerateTemplateDir('stylelint'));
+shell.cp('-r', getModuleSrcTemplateDir('stylelint-prettier'), getModuleGenerateTemplateDir('stylelint-prettier'));
+
 shell.cp('-u', 'src/typescript/templates/**', 'generators/typescript/templates/');
 
 // next
