@@ -23,6 +23,7 @@ shell.cp('-r', getModuleSrcTemplateDir('prettier'), getModuleGenerateTemplateDir
 
 shell.cp('-r', getModuleSrcTemplateDir('stylelint'), getModuleGenerateTemplateDir('stylelint'));
 shell.cp('-r', getModuleSrcTemplateDir('stylelint-prettier'), getModuleGenerateTemplateDir('stylelint-prettier'));
+shell.cp('-r', getModuleSrcTemplateDir('stylelint-sass'), getModuleGenerateTemplateDir('stylelint-sass'));
 
 shell.cp('-u', 'src/typescript/templates/**', 'generators/typescript/templates/');
 
