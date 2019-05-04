@@ -12,7 +12,8 @@
 		"baseUrl": "."
 	},
 	"include": [
-		"src/**/*"
+		"src/**/*",
+		"types.d.ts"
 	],
 	"exclude": [
 		"src/**/templates/*"

@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "eslint-content": "eslint --print-config .",
+    "eslint:lint": "eslint --quiet ./src/**/*.{js,ts,jsx,tsx}",
+    "eslint:lint-fix": "npm run eslint:lint -- --fix"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-eslint-comments": "^3.1.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-unicorn": "^8.0.2"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*.{js,ts,tsx,jsx,json}": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
+  }
+}

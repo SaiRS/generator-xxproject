@@ -27,8 +27,11 @@ shell.cp('-r', getModuleSrcTemplateDir('stylelint-sass'), getModuleGenerateTempl
 // typescript
 shell.cp('-r', getModuleSrcTemplateDir('typescript'), getModuleGenerateTemplateDir('typescript'));
 
-
+// storybook
 shell.cp('-r', getModuleSrcTemplateDir('storybook'), getModuleGenerateTemplateDir('storybook'));
+
+// webpack react app
+shell.cp('-r', getModuleSrcTemplateDir('webpack-react-app'), getModuleGenerateTemplateDir('webpack-react-app'));
 
 // next
 shell.cp('-u', 'src/next/templates/**', 'generators/next/templates/');
@@ -37,7 +40,7 @@ shell.cp('-u', 'src/next/templates/**', 'generators/next/templates/');
 shell.cp('-ur', 'src/dev-env/templates/', 'generators/dev-env');
 
 // copy eslint
-shell.cp('-ur', 'src/eslint/templates', 'generators/eslint/templates');
+shell.cp('-r', getModuleSrcTemplateDir('eslint'), getModuleGenerateTemplateDir('eslint'));
 
 // generator templates
 shell.cp('-u', 'src/app/templates/**', 'generators/app/templates/');

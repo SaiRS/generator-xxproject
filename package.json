@@ -6,11 +6,11 @@
     "type": "git",
     "url": "https://github.com/SaiRS/generator-xxproject/tree/develop"
   },
-  "main": "index.js",
+	"main": "index.js",
   "scripts": {
     "test": "jest",
     "build": "npm run clear && npm run build-ts && npm run copy",
-    "build-ts": "tsc",
+    "build-ts": "tsc --resolveJsonModule",
     "clear": "ts-node scripts/clean.ts",
     "copy": "ts-node scripts/copy.ts",
     "test-generator": "npm run build && yo webapp test",
