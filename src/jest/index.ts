@@ -1,5 +1,4 @@
 import Generator from 'yeoman-generator';
-import * as shell from 'shelljs';
 
 class JestConfig extends Generator {
 	writing() {

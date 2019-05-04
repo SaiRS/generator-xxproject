@@ -1,9 +1,7 @@
 import Generator from 'yeoman-generator';
 
 class PrettierConfig extends Generator {
-	writing() {
-		// copying(1) --> shell脚本完成
-		// copying(2)
+	configuring() {
 		this.fs.copy(
 			this.templatePath('.prettierignore'),
 			this.destinationPath('.prettierignore')
@@ -13,7 +11,9 @@ class PrettierConfig extends Generator {
 			this.templatePath('.prettierrc.js'),
 			this.destinationPath('.prettierrc.js')
 		);
+	}
 
+	writing() {
 		const pkgJson = {
 			devDependencies: {
 				prettier: '^1.17.0'

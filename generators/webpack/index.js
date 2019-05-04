@@ -41,4 +41,3 @@ class Webpack extends yeoman_generator_1.default {
     }
 }
 module.exports = Webpack;
-//# sourceMappingURL=index.js.map
