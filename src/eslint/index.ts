@@ -22,6 +22,7 @@ class Eslint extends Generator {
 	initializing() {
 		if (this.options.typescript) {
 			this.composeWith(require.resolve('../typescript'), {});
+			this.composeWith(require.resolve('../eslint-typescript'), {});
 		}
 		if (this.options.prettier) {
 			this.composeWith(require.resolve('../prettier'), {});

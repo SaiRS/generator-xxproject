@@ -1,18 +1,6 @@
 import Generator from 'yeoman-generator';
 
 class PrettierConfig extends Generator {
-	configuring() {
-		this.fs.copy(
-			this.templatePath('.prettierignore'),
-			this.destinationPath('.prettierignore')
-		);
-
-		this.fs.copy(
-			this.templatePath('.prettierrc.js'),
-			this.destinationPath('.prettierrc.js')
-		);
-	}
-
 	writing() {
 		const pkgJson = {
 			devDependencies: {
@@ -26,6 +14,18 @@ class PrettierConfig extends Generator {
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
+	}
+
+	end() {
+		this.fs.copy(
+			this.templatePath('.prettierignore'),
+			this.destinationPath('.prettierignore')
+		);
+
+		this.fs.copy(
+			this.templatePath('.prettierrc.js'),
+			this.destinationPath('.prettierrc.js')
+		);
 	}
 }
 
