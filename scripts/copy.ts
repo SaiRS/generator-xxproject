@@ -10,7 +10,6 @@ function getModuleGenerateTemplateDir(moduleName: string): string {
 
 
 shell.mkdir('-p', 'generators/app/templates');
-shell.mkdir('-p', 'generators/next/templates');
 shell.mkdir('-p', 'generators/dev-env/templates');
 
 // editorconfig
@@ -34,7 +33,7 @@ shell.cp('-r', getModuleSrcTemplateDir('storybook'), getModuleGenerateTemplateDi
 shell.cp('-r', getModuleSrcTemplateDir('webpack-react-app'), getModuleGenerateTemplateDir('webpack-react-app'));
 
 // next
-shell.cp('-u', 'src/next/templates/**', 'generators/next/templates/');
+shell.cp('-r', getModuleSrcTemplateDir('next'), getModuleGenerateTemplateDir('next'));
 
 // dev-env
 shell.cp('-ur', 'src/dev-env/templates/', 'generators/dev-env');

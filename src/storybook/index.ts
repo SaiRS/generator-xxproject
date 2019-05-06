@@ -6,7 +6,7 @@ class Storybook extends Generator {
 		super(args, options);
 
 		this.option('react', {
-			default: true,
+			default: false,
 			description: 'combine with react?',
 			type: Boolean
 		});

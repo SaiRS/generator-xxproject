@@ -7,13 +7,13 @@ class Eslint extends Generator {
 		super(args, options);
 
 		this.option('typescript', {
-			default: true,
+			default: false,
 			description: 'combine with typescript?',
 			type: Boolean
 		});
 
 		this.option('prettier', {
-			default: true,
+			default: false,
 			description: 'combine with prettier?',
 			type: Boolean
 		});

@@ -6,6 +6,7 @@ export default {
 		project: './tsconfig.json'
 	},
 	rules: {
+		'@typescript-eslint/indent': 'off',
 		// Makes no sense to allow type inferrence for expression parameters, but require typing the response
 		'@typescript-eslint/explicit-function-return-type': [
 			'error',
