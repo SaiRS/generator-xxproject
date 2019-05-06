@@ -1,13 +1,27 @@
 import Generator from 'yeoman-generator';
 
 class Faker extends Generator {
+	// yo xxproject:faker --typescript
+	constructor(args: string | string[], options: {}) {
+		super(args, options);
+
+		this.option('typescript', {
+			default: false,
+			description: 'combine with typescript?',
+			type: Boolean
+		});
+	}
+
+	initializing() {
+		if (this.options.typescript) {
+			this.composeWith(require.resolve('../faker-typescript'), {});
+		}
+	}
+
 	writing() {
 		const pkgJson = {
 			dependencies: {
 				faker: '^4.1.0'
-			},
-			devDependencies: {
-				'@types/faker': '^4.1.5'
 			}
 		};
 
