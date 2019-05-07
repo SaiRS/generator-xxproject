@@ -1,0 +1,8 @@
+{
+	"devDependencies": {
+		"node-sass": "^4.12.0"
+	},
+	"scripts": {
+		"build:sass": "node-sass src/ -o dist/"
+	}
+}

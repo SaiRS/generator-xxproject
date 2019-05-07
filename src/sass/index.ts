@@ -1,15 +1,9 @@
 import Generator from 'yeoman-generator';
+import extendPkg from './extend-pkg.json';
 
 class Sass extends Generator {
 	writing() {
-		const pkgJson = {
-			devDependencies: {
-				'node-sass': '^4.12.0'
-			},
-			scripts: {
-				'build:sass': 'node-sass src/ -o dist/'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
