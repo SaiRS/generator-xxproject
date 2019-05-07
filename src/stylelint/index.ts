@@ -7,13 +7,13 @@ class Stylelint extends Generator {
 		super(args, options);
 
 		this.option('sass', {
-			default: true,
+			default: false,
 			description: 'combine with sass?',
 			type: Boolean
 		});
 
 		this.option('prettier', {
-			default: true,
+			default: false,
 			description: 'combine with prettier?',
 			type: Boolean
 		});

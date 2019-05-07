@@ -8,7 +8,7 @@ import _ from 'lodash';
 import { mergeConfigValue } from './merge-config';
 
 export interface ExtendsOptions {
-	onNoConfigExitCallback: () => void; // 没找到配置文件的回调
+	onNoConfigExitCallback?: () => void; // 没找到配置文件的回调
 }
 
 function noop() {}

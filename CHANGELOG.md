@@ -9,3 +9,9 @@
 1. "babel-plugin-macros": "^2.5.1",
 ### changed
 ### removed
+
+## [2.0.0] - 2019-05-10
+### added
+1. unit test
+2. devide components into five hierarchy, and two type
+3. more clearly
