@@ -11,7 +11,7 @@ module.exports = async ({ config, mode }) => {
 					// Include ts, tsx, js, and jsx files.
 					test: /\.(ts|js)x?$/,
 					exclude: /node_modules/,
-					include: [path.resolve(__dirname, 'src')],
+					// include: [path.resolve(__dirname, 'src')],
 					use: {
 						loader: 'babel-loader'
 					}

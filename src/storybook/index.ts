@@ -11,12 +11,23 @@ class Storybook extends Generator {
 			description: 'combine with react?',
 			type: Boolean
 		});
+
+		this.option('typescript', {
+			default: false,
+			description: 'combine with typescript?',
+			type: Boolean
+		});
 	}
 
 	initializing() {
 		// eslint-disable-next-line
 		if (/* this.options.react */ true) {
 			this.composeWith(require.resolve('../react'), {});
+		}
+
+		// eslint-disable-next-line
+		if (/* this.options.typescript */ true) {
+			this.composeWith(require.resolve('../typescript'), {});
 		}
 	}
 
