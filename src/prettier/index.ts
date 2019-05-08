@@ -1,19 +1,15 @@
 import Generator from 'yeoman-generator';
-
+import extendPkg from './extend-pkg.json';
 class PrettierConfig extends Generator {
 	writing() {
-		const pkgJson = {
-			devDependencies: {
-				prettier: '^1.17.0'
-			},
-			scripts: {
-				'prettier:lint': 'prettier --config .prettierrc.js --check src/**/*',
-				'prettier:lint-fix': 'npm run prettier:lint -- --write'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
+	}
+
+	install() {
+		this.npmInstall();
 	}
 
 	end() {

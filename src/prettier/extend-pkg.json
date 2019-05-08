@@ -1,0 +1,9 @@
+{
+	"devDependencies": {
+		"prettier": "^1.17.0"
+	},
+	"scripts": {
+		"prettier:lint": "prettier --config .prettierrc.js --check src/**/*",
+		"prettier:lint-fix": "npm run prettier:lint -- --write"
+	}
+}
