@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator';
-import eslintPrettierPackage from './config.json';
+import eslintPrettierPackage from './extend-pkg.json';
 import eslintPrettierConfig from './extend-config';
 import { extendEslintConfig } from '../tools/extends-module-config';
 

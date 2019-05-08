@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator';
-import eslintTypescriptPackage from './config.json';
+import eslintTypescriptPackage from './extend-pkg.json';
 import eslintTypescriptConfig from './extend-config';
 import { extendEslintConfig } from '../tools/extends-module-config';
 

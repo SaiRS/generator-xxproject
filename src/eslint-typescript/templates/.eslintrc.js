@@ -7,6 +7,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended'
 	],
 	plugins: ['eslint-comments', 'promise', 'unicorn', '@typescript-eslint'],
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: './tsconfig.json',
 		ecmaVersion: 6,
@@ -46,7 +47,8 @@ module.exports = {
 			'error',
 			{ functions: false, classes: true, variables: true, typedefs: true }
 		],
-		'@typescript-eslint/interface-name-prefix': ['off']
+		'@typescript-eslint/interface-name-prefix': ['off'],
+		'@typescript-eslint/indent': 'off'
 	},
 	settings: {},
 	overrides: [
