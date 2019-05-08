@@ -105,4 +105,5 @@ and in the package.json `script`, we generate two command for prettier
 
 ## TODO
 * add `lerna`
-* 
+* how to test component with `composeWith`
+* add unit test about exist package.json before
