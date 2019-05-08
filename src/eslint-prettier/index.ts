@@ -24,38 +24,6 @@ class EslintPrettier extends Generator {
 				);
 			}
 		});
-
-		// if (pkg['eslintConfig']) {
-		// 	// 扩展package.json中的eslint配置项
-		// 	this.fs.extendJSON(this.destinationPath('package.json'), {
-		// 		eslintConfig: _.mergeWith(
-		// 			pkg['eslintConfig'],
-		// 			eslintPrettierConfig,
-		// 			mergeConfigValue
-		// 		)
-		// 	});
-		// } else {
-		// 	// 按照cosmiconfig去搜索
-		// 	let explorer: cosmiconfig.Explorer = cosmiconfig(_moduleName);
-		// 	let result: null | cosmiconfig.CosmiconfigResult = explorer.searchSync();
-		// 	if (result && !result.isEmpty) {
-		// 		let stylelintConfig: { [key: string]: any } = result.config;
-
-		// 		// 排除package.json的配置
-		// 		if (path.basename(result.filepath) === 'package.json') {
-		// 			return;
-		// 		}
-
-		// 		// 写入原来的地方
-		// 		extendsConfig(this._extendConfig(stylelintConfig), result.filepath);
-		// 	} else {
-		// 		// 新建
-		// 		this.fs.copy(
-		// 			this.templatePath('.eslintrc.js'),
-		// 			this.destinationPath('.eslintrc.js')
-		// 		);
-		// 	}
-		// }
 	}
 }
 
