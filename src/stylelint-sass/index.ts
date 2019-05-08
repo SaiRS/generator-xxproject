@@ -1,13 +1,10 @@
 import Generator from 'yeoman-generator';
 import { extendsStylelintConfig } from '../tools/extends-module-config';
+import extendPkg from './extend-pkg.json';
 
 class StylelintSass extends Generator {
 	writing() {
-		const pkgJson = {
-			devDependencies: {
-				'stylelint-scss': '^3.6.0'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
@@ -25,6 +22,7 @@ class StylelintSass extends Generator {
 			this,
 			{
 				onNoConfigExitCallback: () => {
+					console.log('+++++++++++++++++++++++++++++');
 					this.fs.copy(
 						this.templatePath('.stylelintrc.js'),
 						this.destinationPath('.stylelintrc.js')

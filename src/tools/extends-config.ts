@@ -38,6 +38,7 @@ export function extendsModuleConfig(
 ): boolean {
 	// 先判断package中的配置名
 	if (moduleName !== moduleConfigNameInPkg) {
+		console.log(`${moduleName} !== ${moduleConfigNameInPkg}`);
 		// 读取package.json
 		let pkg = generator.fs.readJSON(generator.destinationPath('package.json'));
 		if (pkg[moduleConfigNameInPkg]) {
@@ -49,34 +50,41 @@ export function extendsModuleConfig(
 					mergeConfigValue
 				)
 			});
-		} else {
-			let explorer: cosmiconfig.Explorer = cosmiconfig(moduleName);
-			let result: null | cosmiconfig.CosmiconfigResult = explorer.searchSync();
-			if (result && !result.isEmpty) {
-				// 旧的配置
-				let oldConfig: { [key: string]: any } = result.config;
 
-				// 排除package.json的配置
-				if (path.basename(result.filepath) === 'package.json') {
-					return;
-				}
+			return;
+		}
+	}
 
-				// 写入原来的地方
-				extendsConfig(
-					_.mergeWith(oldConfig, newConfig, mergeConfigValue),
-					result.filepath,
-					generator
-				);
-			} else {
-				// // 新建
-				// this.fs.copy(
-				// 	this.templatePath('.eslintrc.js'),
-				// 	this.destinationPath('.eslintrc.js')
-				// );
-				if (_.isFunction(options.onNoConfigExitCallback)) {
-					options.onNoConfigExitCallback();
-				}
-			}
+	let explorer: cosmiconfig.Explorer = cosmiconfig(moduleName);
+	let result: null | cosmiconfig.CosmiconfigResult = explorer.searchSync();
+	if (result && !result.isEmpty) {
+		// 旧的配置
+		let oldConfig: { [key: string]: any } = result.config;
+
+		// 排除package.json的配置
+		if (
+			path.basename(result.filepath) === 'package.json' &&
+			moduleName !== moduleConfigNameInPkg
+		) {
+			console.log(`we have already extend before, ${result}`);
+			return;
+		}
+
+		// 写入原来的地方
+		extendsConfig(
+			_.mergeWith(oldConfig, newConfig, mergeConfigValue),
+			result.filepath,
+			generator
+		);
+	} else {
+		// // 新建
+		// this.fs.copy(
+		// 	this.templatePath('.eslintrc.js'),
+		// 	this.destinationPath('.eslintrc.js')
+		// );
+		console.log('did not find any config');
+		if (_.isFunction(options.onNoConfigExitCallback)) {
+			options.onNoConfigExitCallback();
 		}
 	}
 }
