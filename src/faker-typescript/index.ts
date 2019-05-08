@@ -1,12 +1,9 @@
 import Generator from 'yeoman-generator';
+import extendPkg from './extend-pkg.json';
 
 class FakerTypescript extends Generator {
 	writing() {
-		const pkgJson = {
-			devDependencies: {
-				'@types/faker': '^4.1.5'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
