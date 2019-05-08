@@ -1,13 +1,10 @@
 import Generator from 'yeoman-generator';
 import { extendEslintConfig } from '../tools/extends-module-config';
+import extendPkg from './extend-pkg.json';
 
 class JestEslint extends Generator {
 	writing() {
-		const pkgJson = {
-			dependencies: {
-				'eslint-plugin-jest': '^22.4.1'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
