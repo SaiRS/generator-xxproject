@@ -1,5 +1,6 @@
 import Generator from 'yeoman-generator';
 import { isLintStagedEnable } from '../tools/detect';
+import generateExtendedPkg from './extend-pkg';
 
 class Stylelint extends Generator {
 	// yo xxproject stylelint --prettier --sass
@@ -44,25 +45,7 @@ class Stylelint extends Generator {
 	}
 
 	writing() {
-		let linter: { [key: string]: any } = {};
-		if (isLintStagedEnable()) {
-			linter['**/*.{css,scss}'] = ['npm run stylelint:lint-fix', 'git add'];
-		}
-		const pkgJson = {
-			devDependencies: {
-				stylelint: '^10.0.1',
-				'stylelint-config-recommended': '^2.2.0'
-			},
-			scripts: {
-				'stylelint-check': 'stylelint --print-config .',
-				'stylelint:lint':
-					'stylelint ./src/**/*.{css,scss,js,jsx,ts,tsx}; exit 0',
-				'stylelint:lint-fix': 'stylelint ./src/**/*.{css,scss} --fix'
-			},
-			'lint-staged': {
-				linters: linter
-			}
-		};
+		const pkgJson = generateExtendedPkg(isLintStagedEnable());
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);

@@ -1,14 +1,9 @@
 import Generator from 'yeoman-generator';
 import { extendsStylelintConfig } from '../tools/extends-module-config';
-
+import extendPkg from './extend-pkg.json';
 class StylelintPrettier extends Generator {
 	writing() {
-		const pkgJson = {
-			devDependencies: {
-				'stylelint-config-prettier': '^5.1.0',
-				'stylelint-prettier': '^1.0.6'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
