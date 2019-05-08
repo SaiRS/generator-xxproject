@@ -1,0 +1,10 @@
+{
+	"scripts": {
+		"jest:test": "cross-env NODE_ENV=test jest --coverage",
+		"jest:test:watch": "cross-env NODE_ENV=test jest --watchAll"
+	},
+	"devDependencies": {
+		"jest": "^24.7.1",
+		"@types/jest": "^24.0.0"
+	}
+}
