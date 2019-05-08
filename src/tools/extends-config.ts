@@ -1,5 +1,4 @@
 import path from 'path';
-// import jsonfile from 'jsonfile';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import Generator from 'yeoman-generator';
@@ -38,7 +37,6 @@ export function extendsModuleConfig(
 ): boolean {
 	// 先判断package中的配置名
 	if (moduleName !== moduleConfigNameInPkg) {
-		console.log(`${moduleName} !== ${moduleConfigNameInPkg}`);
 		// 读取package.json
 		let pkg = generator.fs.readJSON(generator.destinationPath('package.json'));
 		if (pkg[moduleConfigNameInPkg]) {
@@ -66,7 +64,6 @@ export function extendsModuleConfig(
 			path.basename(result.filepath) === 'package.json' &&
 			moduleName !== moduleConfigNameInPkg
 		) {
-			console.log(`we have already extend before, ${result}`);
 			return;
 		}
 
@@ -77,12 +74,6 @@ export function extendsModuleConfig(
 			generator
 		);
 	} else {
-		// // 新建
-		// this.fs.copy(
-		// 	this.templatePath('.eslintrc.js'),
-		// 	this.destinationPath('.eslintrc.js')
-		// );
-		console.log('did not find any config');
 		if (_.isFunction(options.onNoConfigExitCallback)) {
 			options.onNoConfigExitCallback();
 		}

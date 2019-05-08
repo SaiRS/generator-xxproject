@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator';
-import esconfig from './config.json';
+import extendPkg from './extend-pkg.json';
 
 class Eslint extends Generator {
 	// yo xxproject:eslint --typescript --prettier
@@ -31,7 +31,7 @@ class Eslint extends Generator {
 	}
 
 	writing() {
-		const pkgJson = esconfig;
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);

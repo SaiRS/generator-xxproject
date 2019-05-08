@@ -1,5 +1,6 @@
 import assert from 'yeoman-assert';
 import is from 'is_js';
+import path from 'path';
 
 type AnyObj = { [key: string]: any };
 
@@ -19,7 +20,9 @@ export function assertObjectContent(fileName: string, Obj: AnyObj) {
 		} else if (is.object(Obj[key])) {
 			assertObjectContent(fileName, Obj[key]);
 		} else {
-			assert.fileContent(fileName, `"${key}": "${Obj[key]}"`);
+			// 这儿的单引号，双引号好烦
+			assert.fileContent(fileName, `${Obj[key]}`);
+			assert.fileContent(fileName, `${key}`);
 		}
 	}
 }

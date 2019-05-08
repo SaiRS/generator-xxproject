@@ -22,7 +22,6 @@ class StylelintSass extends Generator {
 			this,
 			{
 				onNoConfigExitCallback: () => {
-					console.log('+++++++++++++++++++++++++++++');
 					this.fs.copy(
 						this.templatePath('.stylelintrc.js'),
 						this.destinationPath('.stylelintrc.js')
