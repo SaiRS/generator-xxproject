@@ -13,5 +13,4 @@
 ## [2.0.0] - 2019-05-10
 ### added
 1. unit test
-2. devide components into five hierarchy, and two type
-3. more clearly
+2. `webpack react lib`, `rollup react lib`
