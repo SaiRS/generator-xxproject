@@ -10,11 +10,9 @@ module.exports = {
 	// mode: "none", // no defaults
 
 	// Chosen mode tells webpack to use its built-in optimizations accordingly.
-	// entry: "./app/entry", // string | object | array
-	// entry: ["./app/entry1", "./app/entry2"],
 	entry: {
-		// a: "./app/entry-a",
-		// b: ["./app/entry-b1", "./app/entry-b2"]
+		// change the index file
+		index: ''
 	},
 	// 默认为 ./src
 	// 这里应用程序开始执行
@@ -26,15 +24,15 @@ module.exports = {
 		// 必须是绝对路径（使用 Node.js 的 path 模块）
 		// filename: "bundle.js", // string
 		// filename: "[name].js", // 用于多个入口点(entry point)（出口点？）
-		// filename: "[chunkhash].js", // 用于长效缓存
+		filename: "[name].[chunkhash].js", // 用于长效缓存
 		// 「入口分块(entry chunk)」的文件名模板
 		// publicPath: "/assets/", // string
 		// publicPath: "",
 		// publicPath: "https://cdn.example.com/",
 		// 输出解析文件的目录，url 相对于 HTML 页面
-		// library: "MyLibrary", // string,
+		library: "MyLibrary", // string,
 		// 导出库(exported library)的名称
-		// libraryTarget: "umd", // 通用模块定义
+		libraryTarget: "umd", // 通用模块定义
 		// libraryTarget: "umd2", // 通用模块定义
 		// libraryTarget: "commonjs2", // exported with module.exports
 		// libraryTarget: "commonjs", // 作为 exports 的属性导出
@@ -72,6 +70,14 @@ module.exports = {
 	module: {
 		// 关于模块配置
 		rules: [
+			      {
+        // Include ts, tsx, js, and jsx files.
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
 			// 模块规则（配置 loader、解析器等选项）
 			// {
 			// 	test: /\.jsx?$/,
@@ -175,7 +181,7 @@ module.exports = {
 			path.resolve(__dirname, "app")
 		],
 		// 用于查找模块的目录
-		extensions: [".js", ".json", ".jsx", ".css"],
+		extensions: [".js", ".json", ".jsx", ".css", "ts", "tsx", "scss", "sass", "less"],
 		// 使用的扩展名
 		alias: {
 			// 模块别名列表
@@ -264,15 +270,21 @@ module.exports = {
 	// externals: ["react", /^@angular\//],
 	// externals: "react", // string（精确匹配）
 	// externals: /^[a-z\-]+($|\/)/, // 正则
-	// externals: { // 对象
-	// 	angular: "this angular", // this["angular"]
-	// 	react: { // UMD
-	// 		commonjs: "react",
-	// 		commonjs2: "react",
-	// 		amd: "react",
-	// 		root: "React"
-	// 	}
-	// },
+	externals: { // 对象
+		// angular: "this angular", // this["angular"]
+		react: { // UMD
+			commonjs: "react",
+			commonjs2: "react",
+			amd: "react",
+			root: "React"
+		},
+		'react-dom': {
+      'commonjs': 'react-dom',
+      'commonjs2': 'react-dom',
+      'amd': 'react-dom',
+      'root': 'ReactDOM'
+    }
+	},
 	// externals: (request) => {
 	// 	/* ... */
 	// 	return "commonjs " + request
@@ -348,4 +360,4 @@ module.exports = {
 	// recordsInputPath: path.resolve(__dirname, "build/records.json"),
 	// recordsOutputPath: path.resolve(__dirname, "build/records.json"),
 	// TODO
-}
+};

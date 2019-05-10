@@ -1,0 +1,25 @@
+{
+	"devDependencies": {
+		"cross-env": "^5.2.0",
+		"ora": "^3.0.0",
+		"chalk": "^2.4.2",
+		"rollup": "^1.11.3",
+		"rollup-plugin-node-resolve": "*",
+		"rollup-plugin-commonjs": "*",
+		"rollup-plugin-babel": "*",
+		"rollup-plugin-replace": "*",
+		"rollup-plugin-uglify": "*",
+		"rollup-plugin-typescript": "^1.0.1",
+		"rollup-plugin-size-snapshot": "*",
+		"@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4"
+	},
+	"dependencies": {
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"typescript": "^3.2.4"
+	},
+	"scripts": {
+		"rollup-lib:build": "rollup --config config/rollup-lib.config.js"
+	}
+}

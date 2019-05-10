@@ -1,5 +1,5 @@
 let webpack = require('webpack');
-let webpackConfig = require('../config/webpack.config'); // webpack打包配置
+let webpackConfig = require('../config/webpack-lib.config'); // webpack打包配置
 let ora = require('ora'); // 终端环境loading效果控件
 let chalk = require('chalk');
 

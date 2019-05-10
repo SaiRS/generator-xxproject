@@ -1,6 +1,8 @@
 import Generator from 'yeoman-generator';
+import extendPkg from './extend-pkg.json';
 
 class Webpack extends Generator {
+	// yo xxproject:webpack-lib --typescript
 	constructor(args: string | string[], options: {}) {
 		super(args, options);
 
@@ -17,26 +19,12 @@ class Webpack extends Generator {
 		});
 	}
 
+	initializing() {
+		this.composeWith(require.resolve('../typescript'), {});
+	}
+
 	writing() {
-		this.fs.copy(this.templatePath('config/'), this.destinationPath('config/'));
-
-		this.fs.copy(
-			this.templatePath('scripts/'),
-			this.destinationPath('scripts/')
-		);
-
-		const pkgJson = {
-			devDependencies: {
-				webpack: '^4.29.2',
-				'webpack-cli': '^3.2.3',
-				'cross-env': '^5.2.0',
-				ora: '^3.0.0',
-				chalk: '^2.4.2'
-			},
-			scripts: {
-				'webpack:build': 'cross-env node scripts/build.js'
-			}
-		};
+		const pkgJson = extendPkg;
 
 		// Extend or create package.json file in destination path
 		this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
@@ -44,6 +32,10 @@ class Webpack extends Generator {
 
 	install() {
 		this.npmInstall();
+	}
+
+	end() {
+		this.fs.copy(this.templatePath('config/'), this.destinationPath('config/'));
 	}
 }
 

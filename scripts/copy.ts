@@ -31,6 +31,8 @@ shell.cp('-r', getModuleSrcTemplateDir('storybook'), getModuleGenerateTemplateDi
 
 // webpack react app
 shell.cp('-r', getModuleSrcTemplateDir('webpack-react-app'), getModuleGenerateTemplateDir('webpack-react-app'));
+shell.cp('-r', getModuleSrcTemplateDir('webpack-lib'), getModuleGenerateTemplateDir('webpack-lib'));
+shell.cp('-r', getModuleSrcTemplateDir('rollup-react-lib'), getModuleGenerateTemplateDir('rollup-react-lib'));
 
 // next
 shell.cp('-r', getModuleSrcTemplateDir('next'), getModuleGenerateTemplateDir('next'));
