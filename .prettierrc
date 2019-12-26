@@ -1,6 +1,7 @@
-# .prettierrc
-useTabs: true
-semi: true
-singleQuote: true
-arrowParens: 'always'
-printWidth: 80
+{
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"arrowParens": "always",
+	"printWidth": 80
+}

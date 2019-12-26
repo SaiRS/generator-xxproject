@@ -2,3 +2,4 @@ node_modules/
 .vscode
 generators/**/*.map
 generators
+generate-types
