@@ -6,16 +6,17 @@
 		"noImplicitAny": true,
 		"moduleResolution": "node",
 		"newLine": "lf",
-		"sourceMap": false,
+		"sourceMap": true,
 		"outDir": "generators",
+		"declaration": true,
+		"declarationDir": "generate-types",
 		"rootDir": "src",
-		"baseUrl": "."
+		"baseUrl": "./",
+		"paths": {
+			"@src/*": ["src/*"]
+		},
+		"resolveJsonModule": true
 	},
-	"include": [
-		"src/**/*",
-		"types.d.ts"
-	],
-	"exclude": [
-		"src/**/templates/*"
-	]
+	"include": ["src/**/*", "types.d.ts"],
+	"exclude": ["src/**/templates/*", "**/__tests__/**", "copy.ts", "*.d.ts"]
 }
