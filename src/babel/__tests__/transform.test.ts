@@ -12,4 +12,9 @@ import { defineTest } from 'jscodeshift/dist/testUtils';
 							同时也会根据这个参数生成test的第一个参数
 // 第五个参数: 选项，用来指定扩展名
 */
-defineTest(__dirname, 'transform', null, 'demo', { parser: 'ts' });
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/exports/MemberExpression/test.input.js' /* { parser: 'ts' } */
+);
