@@ -16,5 +16,40 @@ defineTest(
 	__dirname,
 	'transform',
 	null,
-	'/exports/MemberExpression/test.input.js' /* { parser: 'ts' } */
+	'/exports/MemberExpression/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/exports/ObjectExpression/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/property-key/Identifier/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/property-value/ArrayExpression/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/property-value/Identifier/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/property-value/Identifier-init/test' /* { parser: 'ts' } */
 );

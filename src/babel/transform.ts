@@ -10,7 +10,12 @@ import {
 	MemberExpression,
 	Identifier,
 	ArrayExpression,
-	Literal
+	Literal,
+	ObjectExpression,
+	Node,
+	Program,
+	File,
+	VariableDeclarator
 } from 'jscodeshift';
 import { Collection } from 'jscodeshift/src/Collection';
 import { NodePath } from 'ast-types/lib/node-path';
@@ -106,7 +111,7 @@ function findValueOfExportKey(
 	let exportKeyExpressionCollection = findExportsDotSomeProperty(code, api);
 	if (exportKeyExpressionCollection.length > 0) {
 		// 寻找export[key]
-		exportKeyExpressionCollection.filter(
+		let filterCollection = exportKeyExpressionCollection.filter(
 			(path: ASTPath<AssignmentExpression>) => {
 				let left = path.node.left as MemberExpression;
 				return (
@@ -117,11 +122,10 @@ function findValueOfExportKey(
 		);
 
 		//
-		if (exportKeyExpressionCollection.length > 0) {
+		if (filterCollection.length > 0) {
 			// 修改
-			let right = (exportKeyExpressionCollection.get(0) as NodePath<
-				AssignmentExpression
-			>).node.right;
+			let right = (filterCollection.get(0) as NodePath<AssignmentExpression>)
+				.node.right;
 			return right;
 		} else {
 			return null; // 表示没有 exports.key
@@ -146,14 +150,83 @@ function findValueOfExportKey(
 			return null; // 有module.exports, 但是没有key对应的
 		}
 	} else {
-		throw new Error(
-			`错误的配置文件，既没有找到exports.${key}, 也没有找到module.exports = {}`
-		); // 没有module.exports
+		return null;
 	}
 }
 
-function add(key: string, value: string, code: Collection<any>, api: API) {
+function add(key: string, value: string, root: Program, api: API) {
 	// 查找key存不存在
+
+	// 确定是key没有呢，还是module.exports, exports都不存在
+
+	let code = api.jscodeshift(root);
+
+	// 查找module.exports存不存在
+	let moduleExportsExpression = findModuleExport(code, api);
+	if (moduleExportsExpression.length > 0) {
+		// 因为我们调用了find，所以这儿能够判断是key不存在, 直接添加key, value
+
+		let moduleExportsAssignmentExpressionNodePath: NodePath<AssignmentExpression> = moduleExportsExpression.get(
+			0
+		) as NodePath<AssignmentExpression>;
+
+		let rightObjectExpression: ObjectExpression = moduleExportsAssignmentExpressionNodePath
+			.node.right as ObjectExpression;
+
+		rightObjectExpression.properties.push(
+			api.jscodeshift.property(
+				'init',
+				api.jscodeshift.identifier(key),
+				api.jscodeshift.literal(value)
+			)
+		);
+
+		return;
+	} else {
+		// 查找exports
+		let exportKeyExpressionCollection = findExportsDotSomeProperty(code, api);
+		if (exportKeyExpressionCollection.length > 0) {
+			// 添加key, value
+
+			// 添加一行
+			root.body.push(
+				api.jscodeshift.expressionStatement(
+					api.jscodeshift.assignmentExpression(
+						'=',
+						api.jscodeshift.memberExpression(
+							api.jscodeshift.identifier('exports'),
+							api.jscodeshift.identifier(key),
+							false
+						),
+						api.jscodeshift.arrayExpression([api.jscodeshift.literal(value)])
+					)
+				)
+			);
+
+			return;
+		}
+	}
+
+	// 添加module.exports = {key: value};
+	root.body.push(
+		api.jscodeshift.expressionStatement(
+			api.jscodeshift.assignmentExpression(
+				'=',
+				api.jscodeshift.memberExpression(
+					api.jscodeshift.identifier('module'),
+					api.jscodeshift.identifier('exports'),
+					false
+				),
+				api.jscodeshift.objectExpression([
+					api.jscodeshift.property(
+						'init',
+						api.jscodeshift.identifier(key),
+						api.jscodeshift.literal(value)
+					)
+				])
+			)
+		)
+	);
 }
 
 function modify(
@@ -243,8 +316,8 @@ function modify(
 				return;
 			} else {
 				let arrayValue = (assignCollection.get(0) as NodePath<
-					VariableDeclarator
-				>).node.init as ArrayExpression;
+					AssignmentExpression
+				>).node.right as ArrayExpression;
 
 				let valueLiteral = api.jscodeshift.literal(value);
 				// @ts-ignore
@@ -277,8 +350,10 @@ export default function transform(
 			api
 		);
 	} else {
-		add('plugins', '@babel/proposal-class-properties', code, api);
+		/// 找到program
+		let program: Program = (code.get(0) as NodePath<File>).node.program;
+		add('plugins', '@babel/proposal-class-properties', program, api);
 	}
 
-	return code.toSource();
+	return code.toSource({ quote: 'single' });
 }
