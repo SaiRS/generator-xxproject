@@ -53,3 +53,24 @@ defineTest(
 	null,
 	'/property-value/Identifier-init/test' /* { parser: 'ts' } */
 );
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/exists/full-name/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/exists/short-for/test' /* { parser: 'ts' } */
+);
+
+defineTest(
+	__dirname,
+	'transform',
+	null,
+	'/exists/option/test' /* { parser: 'ts' } */
+);

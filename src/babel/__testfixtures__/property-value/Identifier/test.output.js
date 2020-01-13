@@ -1,7 +1,11 @@
 let plugins;
 
-plugins = ['@babel/proposal-class-properties'];
+plugins = [
+	'@babel/proposal-class-properties',
+	'@babel/proposal-object-rest-spread'
+];
 
 module.exports = {
-	plugins: plugins
+	plugins: plugins,
+	presets: ['@babel/typescript', '@babel/react']
 };

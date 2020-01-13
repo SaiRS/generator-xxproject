@@ -3,3 +3,4 @@ node_modules/
 generators/**/*.map
 generators
 generate-types
+.history

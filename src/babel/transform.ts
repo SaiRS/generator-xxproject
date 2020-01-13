@@ -177,7 +177,7 @@ function add(key: string, value: string, root: Program, api: API) {
 			api.jscodeshift.property(
 				'init',
 				api.jscodeshift.identifier(key),
-				api.jscodeshift.literal(value)
+				api.jscodeshift.arrayExpression([api.jscodeshift.literal(value)])
 			)
 		);
 
@@ -221,7 +221,7 @@ function add(key: string, value: string, root: Program, api: API) {
 					api.jscodeshift.property(
 						'init',
 						api.jscodeshift.identifier(key),
-						api.jscodeshift.literal(value)
+						api.jscodeshift.arrayExpression([api.jscodeshift.literal(value)])
 					)
 				])
 			)
@@ -340,20 +340,51 @@ export default function transform(
 ) {
 	let code = api.jscodeshift(fileInfo.source);
 
-	let value: ASTNode | null = findValueOfExportKey('plugins', code, api);
-	if (value) {
-		modify(
-			'@babel/proposal-class-properties',
-			['@babel/proposal-class-properties'],
-			value,
-			code,
-			api
-		);
-	} else {
-		/// 找到program
-		let program: Program = (code.get(0) as NodePath<File>).node.program;
-		add('plugins', '@babel/proposal-class-properties', program, api);
+	// config
+	let configs = [
+		{
+			name: 'plugins',
+			value: '@babel/proposal-class-properties',
+			optValus: [
+				'@babel/proposal-class-properties',
+				'@babel/plugin-proposal-class-properties'
+			]
+		},
+		{
+			name: 'plugins',
+			value: '@babel/proposal-object-rest-spread',
+			optValus: [
+				'@babel/proposal-object-rest-spread',
+				'@babel/plugins-proposal-object-rest-spread'
+			]
+		},
+		{
+			name: 'presets',
+			value: '@babel/typescript',
+			optValus: ['@babel/typescript', '@babel/preset-typescript']
+		},
+		{
+			name: 'presets',
+			value: '@babel/react',
+			optValus: ['@babel/react', '@babel/preset-react']
+		}
+	];
+
+	for (let config of configs) {
+		let value: ASTNode | null = findValueOfExportKey(config.name, code, api);
+		if (value) {
+			modify(config.value, config.optValus, value, code, api);
+		} else {
+			/// 找到program
+			let program: Program = (code.get(0) as NodePath<File>).node.program;
+			add(config.name, config.value, program, api);
+		}
 	}
 
-	return code.toSource({ quote: 'single' });
+	return code.toSource({
+		quote: 'single',
+		tabWidth: 2,
+		useTabs: true,
+		wrapColumn: 80
+	});
 }
