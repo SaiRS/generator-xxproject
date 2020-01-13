@@ -333,43 +333,45 @@ function modify(
 	return;
 }
 
+let defaultConfigs = [
+	{
+		name: 'plugins',
+		value: '@babel/proposal-class-properties',
+		optValus: [
+			'@babel/proposal-class-properties',
+			'@babel/plugin-proposal-class-properties'
+		]
+	},
+	{
+		name: 'plugins',
+		value: '@babel/proposal-object-rest-spread',
+		optValus: [
+			'@babel/proposal-object-rest-spread',
+			'@babel/plugins-proposal-object-rest-spread'
+		]
+	},
+	{
+		name: 'presets',
+		value: '@babel/typescript',
+		optValus: ['@babel/typescript', '@babel/preset-typescript']
+	},
+	{
+		name: 'presets',
+		value: '@babel/react',
+		optValus: ['@babel/react', '@babel/preset-react']
+	}
+];
+
 export default function transform(
 	fileInfo: FileInfo,
 	api: API,
-	options: Options
+	options: Options = { configs: defaultConfigs }
 ) {
 	let code = api.jscodeshift(fileInfo.source);
 
 	// config
-	let configs = [
-		{
-			name: 'plugins',
-			value: '@babel/proposal-class-properties',
-			optValus: [
-				'@babel/proposal-class-properties',
-				'@babel/plugin-proposal-class-properties'
-			]
-		},
-		{
-			name: 'plugins',
-			value: '@babel/proposal-object-rest-spread',
-			optValus: [
-				'@babel/proposal-object-rest-spread',
-				'@babel/plugins-proposal-object-rest-spread'
-			]
-		},
-		{
-			name: 'presets',
-			value: '@babel/typescript',
-			optValus: ['@babel/typescript', '@babel/preset-typescript']
-		},
-		{
-			name: 'presets',
-			value: '@babel/react',
-			optValus: ['@babel/react', '@babel/preset-react']
-		}
-	];
 
+	let configs = options.configs || defaultConfigs;
 	for (let config of configs) {
 		let value: ASTNode | null = findValueOfExportKey(config.name, code, api);
 		if (value) {

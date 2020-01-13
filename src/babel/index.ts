@@ -5,6 +5,9 @@ import path from 'path';
 import babelConfig from './templates/babel.config';
 import { getBabelPackageConfig } from './extend-pkg';
 
+import transform from './transform';
+import jscodeshift from 'jscodeshift';
+
 const BABEL_PACKAGE_CONFIG = 'package.json#babel';
 
 /**
@@ -117,6 +120,59 @@ export default class BabelGenerator extends Generator {
 			// 修改对应的js文件
 			if (fs.existsSync(this.babelConfigPath)) {
 				// 修改
+				// 通过执行jscodeshift
+
+				// 生成config
+				let configs = [
+					{
+						name: 'plugins',
+						value: '@babel/proposal-class-properties',
+						optValus: [
+							'@babel/proposal-class-properties',
+							'@babel/plugin-proposal-class-properties'
+						]
+					},
+					{
+						name: 'plugins',
+						value: '@babel/proposal-object-rest-spread',
+						optValus: [
+							'@babel/proposal-object-rest-spread',
+							'@babel/plugins-proposal-object-rest-spread'
+						]
+					}
+				];
+				if (this.options.typescript) {
+					configs.push({
+						name: 'presets',
+						value: '@babel/typescript',
+						optValus: ['@babel/typescript', '@babel/preset-typescript']
+					});
+				}
+
+				if (this.options.react) {
+					configs.push({
+						name: 'presets',
+						value: '@babel/react',
+						optValus: ['@babel/react', '@babel/preset-react']
+					});
+				}
+
+				const source = fs.readFileSync(this.babelConfigPath, 'utf8');
+				transform(
+					{
+						path: this.babelConfigPath,
+						source
+					},
+					{
+						j: jscodeshift,
+						jscodeshift: jscodeshift,
+						stats: () => {},
+						report: () => {}
+					},
+					{
+						configs: []
+					}
+				);
 			} else {
 				// 复制
 				this.fs.copy(
